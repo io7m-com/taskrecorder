@@ -13,28 +13,28 @@
 
   <pre><![CDATA[
 final Logger logger;
-final TRTask<Integer> task = TRTask.create(logger, "Book Flight");
+final TRTaskRecorderType<Integer> recorder = TRTaskRecorder.create(logger, "Book Flight");
 
-task.beginStep("Picking best airline price...");
+recorder.beginStep("Picking best airline price...");
 Airline airline;
 try {
   airline = pickAirline();
-  task.setSucceeded("Found airline.");
+  recorder.setStepSucceeded("Found airline.");
 } catch (Exception e) {
-  task.setFailed("No price available.", e);
+  recorder.setTaskFailed("No price available.", e);
   return;
 }
 
-task.beginStep("Making reservation...");
+recorder.beginStep("Making reservation...");
 try {
   int id = makeReservation(airline);
-  task.setSucceeded("Created reservation.");
-  task.setResult(Optional.of(id));
+  recorder.setTaskSucceeded("Created reservation.", id);
 } catch (Exception e) {
-  task.setFailed("No reservations available.", e);
+  recorder.setTaskFailed("No reservations available.", e);
   return;
 }
 
+var task = recorder.toTask();
 assert task.resolution() instanceof TRSucceeded;
 ]]></pre>
 </div>

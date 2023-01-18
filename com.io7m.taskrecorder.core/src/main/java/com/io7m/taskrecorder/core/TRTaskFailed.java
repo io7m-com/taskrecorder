@@ -17,25 +17,31 @@
 package com.io7m.taskrecorder.core;
 
 import java.util.Objects;
+import java.util.Optional;
 
 /**
- * A step succeeded.
+ * A task failed.
  *
- * @param message The success message
+ * @param message   The failure message
+ * @param exception The exception, if any
+ * @param <T>       The type of returned values
  */
 
-public record TRSucceeded(
-  String message)
-  implements TRResolutionType
+public record TRTaskFailed<T>(
+  String message,
+  Optional<Throwable> exception)
+  implements TRTaskResolutionType<T>
 {
   /**
-   * A step succeeded.
+   * A task failed.
    *
-   * @param message The success message
+   * @param message   The failure message
+   * @param exception The exception, if any
    */
 
-  public TRSucceeded
+  public TRTaskFailed
   {
     Objects.requireNonNull(message, "message");
+    Objects.requireNonNull(exception, "exception");
   }
 }

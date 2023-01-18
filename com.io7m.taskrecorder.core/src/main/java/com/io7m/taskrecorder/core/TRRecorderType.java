@@ -18,15 +18,12 @@
 package com.io7m.taskrecorder.core;
 
 /**
- * The resolution of a task/step.
+ * The base type of recorders.
  */
 
-public sealed interface TRResolutionType
-  permits TRFailed, TRSucceeded
+public sealed interface TRRecorderType
+  permits TRTaskRecorderType,
+  TRTaskStepRecorderType
 {
-  /**
-   * @return The resolution message
-   */
 
-  String message();
 }

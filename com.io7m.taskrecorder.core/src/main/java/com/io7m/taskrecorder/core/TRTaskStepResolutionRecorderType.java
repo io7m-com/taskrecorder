@@ -20,13 +20,10 @@ package com.io7m.taskrecorder.core;
 import java.util.Optional;
 
 /**
- * The type of steps.
- *
- * A step is either a discrete step or a subtask consisting of a number of
- * steps.
+ * A recorder for the resolution aspects of a step.
  */
 
-public sealed interface TRStepType permits TRStep, TRTask
+public interface TRTaskStepResolutionRecorderType
 {
   /**
    * Set the step as having succeeded.
@@ -34,15 +31,19 @@ public sealed interface TRStepType permits TRStep, TRTask
    * @param message The success message
    */
 
-  void setSucceeded(String message);
+  default void setStepSucceeded(
+    final String message)
+  {
+    this.setStepResolution(new TRStepSucceeded(message));
+  }
 
   /**
    * Set the step as having succeeded.
    */
 
-  default void setSucceeded()
+  default void setStepSucceeded()
   {
-    this.setSucceeded("");
+    this.setStepSucceeded("");
   }
 
   /**
@@ -52,9 +53,12 @@ public sealed interface TRStepType permits TRStep, TRTask
    * @param exception The exception
    */
 
-  void setFailed(
-    String message,
-    Optional<Throwable> exception);
+  default void setStepFailed(
+    final String message,
+    final Optional<Throwable> exception)
+  {
+    this.setStepResolution(new TRStepFailed(message, exception));
+  }
 
   /**
    * Set the step as having failed.
@@ -63,11 +67,11 @@ public sealed interface TRStepType permits TRStep, TRTask
    * @param exception The exception
    */
 
-  default void setFailed(
+  default void setStepFailed(
     final String message,
     final Throwable exception)
   {
-    this.setFailed(message, Optional.of(exception));
+    this.setStepFailed(message, Optional.of(exception));
   }
 
   /**
@@ -76,21 +80,19 @@ public sealed interface TRStepType permits TRStep, TRTask
    * @param message The failure message
    */
 
-  default void setFailed(
+  default void setStepFailed(
     final String message)
   {
-    this.setFailed(message, Optional.empty());
+    this.setStepFailed(message, Optional.empty());
   }
 
   /**
-   * @return The step resolution
+   * Set the resolution of the step. By default, steps are considered to have
+   * succeeded with an empty resolution message.
+   *
+   * @param resolution The resolution
    */
 
-  TRResolutionType resolution();
-
-  /**
-   * @return The step name
-   */
-
-  String name();
+  void setStepResolution(
+    TRStepResolutionType resolution);
 }

@@ -14,33 +14,19 @@
  * IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+
 package com.io7m.taskrecorder.core;
 
-import java.util.Objects;
-import java.util.Optional;
-
 /**
- * A step failed.
- *
- * @param message   The failure message
- * @param exception The exception, if any
+ * The type of task items (steps, subtasks).
  */
 
-public record TRFailed(
-  String message,
-  Optional<Throwable> exception)
-  implements TRResolutionType
+public sealed interface TRTaskItemType
+  permits TRStep, TRTask
 {
   /**
-   * A step failed.
-   *
-   * @param message   The failure message
-   * @param exception The exception, if any
+   * @return The description of the item
    */
 
-  public TRFailed
-  {
-    Objects.requireNonNull(message, "message");
-    Objects.requireNonNull(exception, "exception");
-  }
+  String description();
 }

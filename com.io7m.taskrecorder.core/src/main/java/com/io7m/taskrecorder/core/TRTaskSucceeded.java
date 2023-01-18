@@ -19,27 +19,28 @@ package com.io7m.taskrecorder.core;
 import java.util.Objects;
 
 /**
- * An immutable record of a step.
+ * A task succeeded.
  *
- * @param description The step description
- * @param resolution  The step resolution
+ * @param message The success message
+ * @param result  The task result
+ * @param <T>     The type of returned values
  */
 
-public record TRStep(
-  String description,
-  TRStepResolutionType resolution)
-  implements TRTaskItemType
+public record TRTaskSucceeded<T>(
+  String message,
+  T result)
+  implements TRTaskResolutionType<T>
 {
   /**
-   * An immutable record of a step.
+   * A step succeeded.
    *
-   * @param description The step description
-   * @param resolution  The step resolution
+   * @param message The success message
+   * @param result  The task result
    */
 
-  public TRStep
+  public TRTaskSucceeded
   {
-    Objects.requireNonNull(description, "description");
-    Objects.requireNonNull(resolution, "resolution");
+    Objects.requireNonNull(message, "message");
+    Objects.requireNonNull(result, "result");
   }
 }
