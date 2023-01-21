@@ -40,6 +40,20 @@ public non-sealed interface TRTaskRecorderType<T>
     String description);
 
   /**
+   * Begin recording a new subtask that does not return a result.
+   *
+   * @param description The description
+   *
+   * @return The new subtask recorder
+   */
+
+  default TRTaskRecorderType<TRNoResult> beginSubtaskWithoutResult(
+    final String description)
+  {
+    return this.beginSubtask(description);
+  }
+
+  /**
    * Begin a new step. This sets the current step of the current task recorder
    * to the new step.
    *
