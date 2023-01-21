@@ -14,28 +14,18 @@
  * IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+
 package com.io7m.taskrecorder.core;
 
-import java.util.Objects;
-
 /**
- * A step succeeded.
- *
- * @param message The success message
+ * The "unit" type for tasks that do not return anything.
  */
 
-public record TRSucceeded(
-  String message)
-  implements TRResolutionType
+public enum TRNoResult
 {
   /**
-   * A step succeeded.
-   *
-   * @param message The success message
+   * The "unit" type for tasks that do not return anything.
    */
 
-  public TRSucceeded
-  {
-    Objects.requireNonNull(message, "message");
-  }
+  NO_RESULT
 }

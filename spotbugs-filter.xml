@@ -19,7 +19,28 @@
 
   <Match>
     <Class name="~com\.io7m\.taskrecorder\.core\.TRTask"/>
-    <Bug pattern="EI_EXPOSE_REP"/>
+    <Or>
+      <Bug pattern="EI_EXPOSE_REP"/>
+      <Bug pattern="EI_EXPOSE_REP2"/>
+      <Bug pattern="WEM_WEAK_EXCEPTION_MESSAGING"/>
+    </Or>
+  </Match>
+
+  <Match>
+    <Class name="~com\.io7m\.taskrecorder\.core\.TRTaskRecorder"/>
+    <Or>
+      <Bug pattern="DRE_DECLARED_RUNTIME_EXCEPTION"/>
+      <Bug pattern="EI_EXPOSE_REP"/>
+      <Bug pattern="WEM_WEAK_EXCEPTION_MESSAGING"/>
+      <Bug pattern="ITC_INHERITANCE_TYPE_CHECKING"/>
+    </Or>
+  </Match>
+
+  <Match>
+    <Class name="~com\.io7m\.taskrecorder\.core\.TRTaskRecorderType"/>
+    <Or>
+      <Bug pattern="DRE_DECLARED_RUNTIME_EXCEPTION"/>
+    </Or>
   </Match>
 
 </FindBugsFilter>

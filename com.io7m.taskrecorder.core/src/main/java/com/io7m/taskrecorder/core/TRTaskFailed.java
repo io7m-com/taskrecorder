@@ -20,25 +20,26 @@ import java.util.Objects;
 import java.util.Optional;
 
 /**
- * A step failed.
+ * A task failed.
  *
  * @param message   The failure message
  * @param exception The exception, if any
+ * @param <T>       The type of returned values
  */
 
-public record TRFailed(
+public record TRTaskFailed<T>(
   String message,
   Optional<Throwable> exception)
-  implements TRResolutionType
+  implements TRTaskResolutionType<T>
 {
   /**
-   * A step failed.
+   * A task failed.
    *
    * @param message   The failure message
    * @param exception The exception, if any
    */
 
-  public TRFailed
+  public TRTaskFailed
   {
     Objects.requireNonNull(message, "message");
     Objects.requireNonNull(exception, "exception");

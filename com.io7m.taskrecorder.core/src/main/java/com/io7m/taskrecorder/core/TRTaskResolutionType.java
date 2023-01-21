@@ -14,32 +14,21 @@
  * IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
+
 package com.io7m.taskrecorder.core;
 
-import java.util.Objects;
-
 /**
- * An immutable record of a step.
+ * The resolution of a task.
  *
- * @param description The step description
- * @param resolution  The step resolution
+ * @param <T> The type of values returned by successful tasks
  */
 
-public record TRStep(
-  String description,
-  TRStepResolutionType resolution)
-  implements TRTaskItemType
+public sealed interface TRTaskResolutionType<T>
+  permits TRTaskFailed, TRTaskSucceeded
 {
   /**
-   * An immutable record of a step.
-   *
-   * @param description The step description
-   * @param resolution  The step resolution
+   * @return The resolution message
    */
 
-  public TRStep
-  {
-    Objects.requireNonNull(description, "description");
-    Objects.requireNonNull(resolution, "resolution");
-  }
+  String message();
 }

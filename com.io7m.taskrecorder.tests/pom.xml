@@ -9,7 +9,7 @@
   <parent>
     <artifactId>com.io7m.taskrecorder</artifactId>
     <groupId>com.io7m.taskrecorder</groupId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
   </parent>
 
   <artifactId>com.io7m.taskrecorder.tests</artifactId>
@@ -56,5 +56,15 @@
       <artifactId>logback-classic</artifactId>
     </dependency>
   </dependencies>
+
+  <build>
+    <plugins>
+      <!-- Determine test coverage -->
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
 
 </project>

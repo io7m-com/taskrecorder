@@ -17,29 +17,30 @@
 package com.io7m.taskrecorder.core;
 
 import java.util.Objects;
+import java.util.Optional;
 
 /**
- * An immutable record of a step.
+ * A step failed.
  *
- * @param description The step description
- * @param resolution  The step resolution
+ * @param message   The failure message
+ * @param exception The exception, if any
  */
 
-public record TRStep(
-  String description,
-  TRStepResolutionType resolution)
-  implements TRTaskItemType
+public record TRStepFailed(
+  String message,
+  Optional<Throwable> exception)
+  implements TRStepResolutionType
 {
   /**
-   * An immutable record of a step.
+   * A task failed.
    *
-   * @param description The step description
-   * @param resolution  The step resolution
+   * @param message   The failure message
+   * @param exception The exception, if any
    */
 
-  public TRStep
+  public TRStepFailed
   {
-    Objects.requireNonNull(description, "description");
-    Objects.requireNonNull(resolution, "resolution");
+    Objects.requireNonNull(message, "message");
+    Objects.requireNonNull(exception, "exception");
   }
 }
