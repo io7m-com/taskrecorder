@@ -12,7 +12,7 @@
 
   <groupId>com.io7m.taskrecorder</groupId>
   <artifactId>com.io7m.taskrecorder</artifactId>
-  <version>0.0.2-SNAPSHOT</version>
+  <version>0.0.2</version>
   <packaging>pom</packaging>
 
   <description>UI task recorder</description>
