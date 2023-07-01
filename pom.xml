@@ -7,7 +7,7 @@
   <parent>
     <groupId>com.io7m.primogenitor</groupId>
     <artifactId>com.io7m.primogenitor.full</artifactId>
-    <version>7.5.0</version>
+    <version>8.0.0-beta0001</version>
   </parent>
 
   <groupId>com.io7m.taskrecorder</groupId>
@@ -28,7 +28,7 @@
     <com.io7m.xstructural.version>1.4.0</com.io7m.xstructural.version>
     <io7m.api.previousVersion>0.0.1-SNAPSHOT</io7m.api.previousVersion>
     <junit.version>5.8.2</junit.version>
-    <logback.version>1.4.7</logback.version>
+    <logback.version>1.4.8</logback.version>
   </properties>
 
   <licenses>
