@@ -1,0 +1,46 @@
+
+## taskrecorder
+
+The `taskrecorder` package provides a simple abstraction to record the steps
+(and subtasks) performed during the execution of tasks within an application.
+
+## Features
+
+* Record detailed task steps for informative error reports.
+* High coverage test suite.
+* [OSGi-ready](https://www.osgi.org/)
+* [JPMS-ready](https://en.wikipedia.org/wiki/Java_Platform_Module_System)
+* ISC license.
+
+## Usage
+
+Create a new task, and create steps and subtasks as the application performs
+operations:
+
+```
+final Logger logger;
+final TRTaskRecorderType<Integer> recorder =
+  TRTaskRecorder.create(logger, "Book Flight");
+
+recorder.beginStep("Picking best airline price...");
+Airline airline;
+try {
+  airline = pickAirline();
+  recorder.setStepSucceeded("Found airline.");
+} catch (Exception e) {
+  recorder.setTaskFailed("No price available.", e);
+  return;
+}
+
+recorder.beginStep("Making reservation...");
+try {
+  int id = makeReservation(airline);
+  recorder.setTaskSucceeded("Created reservation.", id);
+} catch (Exception e) {
+  recorder.setTaskFailed("No reservations available.", e);
+  return;
+}
+
+var task = recorder.toTask();
+assert task.resolution() instanceof TRSucceeded;
+```
