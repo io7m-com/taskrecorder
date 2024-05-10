@@ -9,7 +9,7 @@
   <parent>
     <artifactId>com.io7m.taskrecorder</artifactId>
     <groupId>com.io7m.taskrecorder</groupId>
-    <version>0.0.2</version>
+    <version>1.0.0</version>
   </parent>
 
   <artifactId>com.io7m.taskrecorder.core</artifactId>

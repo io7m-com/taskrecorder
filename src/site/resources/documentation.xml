@@ -3,38 +3,6 @@
 <div xmlns="http://www.w3.org/1999/xhtml">
   <h3>User documentation</h3>
   <p>
-    The <tt>taskrecorder</tt> package is intended to be used within long-running tasks in order to record the steps
-    (and subtasks) performed during the execution of the tasks.
+    See the <a href="https://github.com/io7m-com/taskrecorder/blob/develop/README.md">README</a>.
   </p>
-
-  <p>
-    Create a new task, and create steps and subtasks as the application performs operations:
-  </p>
-
-  <pre><![CDATA[
-final Logger logger;
-final TRTaskRecorderType<Integer> recorder = TRTaskRecorder.create(logger, "Book Flight");
-
-recorder.beginStep("Picking best airline price...");
-Airline airline;
-try {
-  airline = pickAirline();
-  recorder.setStepSucceeded("Found airline.");
-} catch (Exception e) {
-  recorder.setTaskFailed("No price available.", e);
-  return;
-}
-
-recorder.beginStep("Making reservation...");
-try {
-  int id = makeReservation(airline);
-  recorder.setTaskSucceeded("Created reservation.", id);
-} catch (Exception e) {
-  recorder.setTaskFailed("No reservations available.", e);
-  return;
-}
-
-var task = recorder.toTask();
-assert task.resolution() instanceof TRSucceeded;
-]]></pre>
 </div>
