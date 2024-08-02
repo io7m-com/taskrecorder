@@ -27,6 +27,7 @@ open module com.io7m.taskrecorder.tests
   requires org.junit.jupiter.engine;
   requires org.junit.platform.commons;
   requires org.junit.platform.engine;
+  requires org.junit.platform.launcher;
 
   requires com.io7m.taskrecorder.core;
   requires org.slf4j;

@@ -31,10 +31,12 @@
 
     <!-- io7m dependencies. -->
     <com.io7m.xstructural.version>1.4.0</com.io7m.xstructural.version>
+    <com.io7m.seltzer.version>1.0.1</com.io7m.seltzer.version>
 
     <!-- Third-party dependencies. -->
-    <junit.version>5.8.2</junit.version>
     <logback.version>1.5.6</logback.version>
+    <net.jqwik.version>1.9.0</net.jqwik.version>
+    <org.junit.version>5.10.3</org.junit.version>
   </properties>
 
   <licenses>
@@ -87,6 +89,14 @@
 
   <dependencyManagement>
     <dependencies>
+      <!-- Seltzer. -->
+      <dependency>
+        <groupId>com.io7m.seltzer</groupId>
+        <artifactId>com.io7m.seltzer.api</artifactId>
+        <version>${com.io7m.seltzer.version}</version>
+      </dependency>
+
+      <!-- Build and metadata. -->
       <dependency>
         <groupId>org.osgi</groupId>
         <artifactId>org.osgi.annotation.bundle</artifactId>
@@ -97,16 +107,8 @@
         <artifactId>org.osgi.annotation.versioning</artifactId>
         <version>1.1.2</version>
       </dependency>
-      <dependency>
-        <groupId>org.junit.jupiter</groupId>
-        <artifactId>junit-jupiter-api</artifactId>
-        <version>5.10.3</version>
-      </dependency>
-      <dependency>
-        <groupId>org.junit.jupiter</groupId>
-        <artifactId>junit-jupiter-engine</artifactId>
-        <version>5.10.3</version>
-      </dependency>
+
+      <!-- Logging. -->
       <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-api</artifactId>
@@ -122,15 +124,24 @@
         <artifactId>logback-core</artifactId>
         <version>${logback.version}</version>
       </dependency>
+
+      <!-- Test suite. -->
+      <dependency>
+        <groupId>org.junit</groupId>
+        <artifactId>junit-bom</artifactId>
+        <version>${org.junit.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
       <dependency>
         <groupId>net.jqwik</groupId>
         <artifactId>jqwik-api</artifactId>
-        <version>1.9.0</version>
+        <version>${net.jqwik.version}</version>
       </dependency>
       <dependency>
         <groupId>net.jqwik</groupId>
         <artifactId>jqwik-engine</artifactId>
-        <version>1.9.0</version>
+        <version>${net.jqwik.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
