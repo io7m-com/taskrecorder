@@ -33,6 +33,7 @@ jobs:
         id: project_is_snapshot
         run: java .github/workflows/Tools.java ShowProjectIsSnapshot pom.xml >> "$GITHUB_OUTPUT"
 
+
       - name: Build
         env:
           XOANON_REALLY_USE_LOCAL_DISPLAY: true
@@ -46,7 +47,7 @@ jobs:
           path: ./com.io7m.taskrecorder.tests/target/surefire-reports
 
       - name: Coverage
-        uses: codecov/codecov-action@v4.5.0
+        uses: codecov/codecov-action@v4.6.0
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           file: com.io7m.taskrecorder.tests/target/site/jacoco-aggregate/jacoco.xml
