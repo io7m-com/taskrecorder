@@ -32,7 +32,6 @@
     <io7m.java.targetJavaVersion>21</io7m.java.targetJavaVersion>
 
     <!-- io7m dependencies. -->
-    <com.io7m.xstructural.version>1.4.0</com.io7m.xstructural.version>
 
     <!-- Third-party dependencies. -->
     <org.junit.version>5.14.2</org.junit.version>
