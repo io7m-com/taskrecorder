@@ -34,7 +34,7 @@
     <!-- io7m dependencies. -->
 
     <!-- Third-party dependencies. -->
-    <org.junit.version>5.14.2</org.junit.version>
+    <org.junit.version>5.14.3</org.junit.version>
     <logback.version>1.5.28</logback.version>
   </properties>
 
